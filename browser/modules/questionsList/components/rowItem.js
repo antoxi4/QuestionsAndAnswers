@@ -17,7 +17,7 @@ const RowItem = React.createClass({
           </div>
         </div>
         <div className={'links'} style={styles.questionTitleContainer}>
-          <Link to={`/quest/${this.props.data.id}`}>{this.props.data.title}</Link>
+          <Link to={`/questions/view/${this.props.data.id}`}>{this.props.data.title}</Link>
         </div>
       </div>
     );

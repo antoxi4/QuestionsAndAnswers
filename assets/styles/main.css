@@ -14,3 +14,10 @@ body {
 .filter:hover {
   background-color: #CFD8DC;
 }
+
+.postbutton {
+  background-color: #ECEFF1;
+}
+.postbutton:hover {
+  background-color: #90A4AE;
+}

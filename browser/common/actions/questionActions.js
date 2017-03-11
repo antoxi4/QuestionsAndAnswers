@@ -25,3 +25,45 @@ export function getQuestionFromServer(questionId) {
     });
   };
 }
+
+export function openAnswerInput() {
+  return storeData({
+    isAnswerInputOpened: true
+  });
+}
+
+export function closeAnswerInput() {
+  return storeData({
+    isAnswerInputOpened: false
+  });
+}
+
+export function setAnswerText(value) {
+  return storeData({
+    answerInputText: value
+  });
+}
+
+export function sendAnswer(questionId) {
+  return (dispatch, getState) => {
+    const body = {
+      userId: 5,
+      questionId: questionId,
+      answer: getState().question.answerInputText
+    };
+
+    return fetch(`${apiURL}/question/answer`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).then((response) => (response.json()))
+    .then((response) => {
+      dispatch(closeAnswerInput());
+      return dispatch(getQuestionFromServer(questionId));
+    }).catch((error) => {
+      console.error(`Send Answer :: ${error.message}`);
+    });
+  };
+}

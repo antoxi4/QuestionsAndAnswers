@@ -1,5 +1,7 @@
 'use strict';
 
 export default {
-  question: []
+  question: [],
+  isAnswerInputOpened: false,
+  answerInputText: ''
 };

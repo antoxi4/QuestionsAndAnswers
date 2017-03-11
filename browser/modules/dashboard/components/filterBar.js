@@ -12,7 +12,7 @@ const FilterBar = React.createClass({
         key={idx}
         className={this.props.activeFilterId === idx ? 'activeFilter' : 'filter'}
         style={styles[this.props.activeFilterId === idx ? 'activeFilterItem' : 'filterItem']}
-        onClick={() => this.props.setActiveFilterId(filter.id)}
+        onClick={() => this.props.setActiveFilterId(filter)}
       >
         {filter.title}
       </div>

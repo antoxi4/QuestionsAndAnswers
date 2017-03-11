@@ -35,18 +35,14 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  '/dashboard': {
-    view: 'homepage'
-  },
-  '/quest/:questionId': {
-    view: 'homepage'
-  },
 
   'post /api/user': 'UserController.create',
   'post /api/question': 'QuestionController.create',
   'post /api/question/answer': 'AnswerController.create',
   'get /api/user/:userName': 'UserController.findOne',
   'get /api/question': 'QuestionController.find',
+  'get /api/question/answered': 'QuestionController.findAnswered',
+  'get /api/question/nonanswered': 'QuestionController.findNonAnswered',
   'get /api/question/:questionId': 'QuestionController.findOne',
 
   /***************************************************************************

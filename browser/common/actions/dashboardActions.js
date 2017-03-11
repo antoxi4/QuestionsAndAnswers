@@ -1,6 +1,7 @@
 'use strict';
 
 import { DASHBOARD_STORE } from './actionTypes';
+import { QuestionsListActions } from './index';
 
 function storeData(data) {
   return {
@@ -9,8 +10,12 @@ function storeData(data) {
   };
 }
 
-export function setActiveFilterId(filterId) {
-  return storeData({
-    activeFilterId: filterId
-  });
+export function setActiveFilterId(filterData) {
+  return (dispatch, getState) => {
+    dispatch(QuestionsListActions.getQuestionsFromServer(filterData.getURL));
+    return dispatch(storeData({
+      activeFilterId: filterData.id,
+      getURL: filterData.getURL
+    }));
+  };
 }

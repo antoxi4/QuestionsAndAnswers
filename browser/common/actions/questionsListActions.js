@@ -12,9 +12,10 @@ function storeData(data) {
   };
 }
 
-export function getQuestionsFromServer() {
+export function getQuestionsFromServer(getURL = null) {
   return (dispatch, getState) => {
-    return fetch(`${apiURL}/question`).then((response) => (response.json()))
+    const requestURL = getURL ? getURL : getState().dashboard.getURL;
+    return fetch(`${apiURL}/${requestURL}`).then((response) => (response.json()))
     .then((response) => {
       return dispatch(storeData({
         questions: response.data

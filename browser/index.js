@@ -3,15 +3,20 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './app';
+import store from './common/store';
+import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
+  Redirect,
   IndexRedirect,
   Link
 } from 'react-router-dom';
 
 render((
+  <Provider store={store}>
     <Router>
-      <Route exec path='/' component={App}/>
+      <Route path='/' component={App}/>
     </Router>
+  </Provider>
 ), document.getElementById('app'));

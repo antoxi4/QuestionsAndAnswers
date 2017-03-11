@@ -1,6 +1,38 @@
 'use strict';
 
 module.exports = {
+  findAnswered(req, res) {
+    return QuestionService.getQuestions().then((questionsResult) => {
+      const filteredQuestions = _getAnsweredQuestions(questionsResult);
+      res.json({
+        status: 'ok',
+        data: filteredQuestions
+      });
+    }).catch((error) => {
+      sails.log.error(`Find Questions Controller :: ${error.message}`);
+      res.json({
+        status: 'error',
+        errorMessage: error.message
+      });
+    });
+  },
+
+  findNonAnswered(req, res) {
+    return QuestionService.getQuestions().then((questionsResult) => {
+      const filteredQuestions = _getNonAnsweredQuestions(questionsResult);
+      res.json({
+        status: 'ok',
+        data: filteredQuestions
+      });
+    }).catch((error) => {
+      sails.log.error(`Find Questions Controller :: ${error.message}`);
+      res.json({
+        status: 'error',
+        errorMessage: error.message
+      });
+    });
+  },
+
   find(req, res) {
     return QuestionService.getQuestions().then((questionsResult) => {
       res.json({
@@ -70,4 +102,28 @@ module.exports = {
       });
     });
   }
+};
+
+function _getAnsweredQuestions(questions) {
+  let filteredQuestions = [];
+
+  questions.forEach((question, idx) => {
+    if (question.answers.length > 0) {
+      filteredQuestions.push(question);
+    }
+  });
+
+  return filteredQuestions;
+};
+
+function _getNonAnsweredQuestions(questions) {
+  let filteredQuestions = [];
+
+  questions.forEach((question, idx) => {
+    if (question.answers.length === 0) {
+      filteredQuestions.push(question);
+    }
+  });
+
+  return filteredQuestions;
 };

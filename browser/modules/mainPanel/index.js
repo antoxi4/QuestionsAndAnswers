@@ -8,7 +8,7 @@ const MainPanel = React.createClass({
       <div style={styles.mainContainer}>
         <div>Questions And Answers</div>
         <div style={styles.toolContainer}>
-          <div className={"links"} style={styles.actionContainer}>Add Questions</div>
+          <div className={"links"} onClick={() => this.props.history.push('/questions/ask')}style={styles.actionContainer}>Ask Questions</div>
           <div className={"links"} style={styles.actionContainer}>Sign In</div>
         </div>
       </div>

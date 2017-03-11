@@ -4,28 +4,22 @@ import React from 'react';
 import MainPanel from './modules/mainPanel';
 import DashBoard from './modules/dashboard';
 import QuestionDetails from './modules/questionDetails';
-import store from './common/store';
-import { Provider } from 'react-redux'
+import AddQuestion from './modules/addQuestion';
 import {
-  IndexRoute,
   Redirect,
-  BrowserRouter as Router,
-  IndexRedirect,
-  Route,
-  Link
+  Route
 } from 'react-router-dom';
 
-const App = () => (
-  <Provider store={store}>
-    <div style={styles.mainContainer}>
-      <MainPanel/>
-      <div style={styles.contentContainer}>
-        <Redirect to="/dashboard"/>
-        <Route exact path='/dashboard' component={DashBoard}/>
-        <Route exact path='/quest/:questionId' component={QuestionDetails}/>
-      </div>
+const App = ({...props}) => (
+  <div style={styles.mainContainer}>
+    <MainPanel {...props}/>
+    <div style={styles.contentContainer}>
+      <Redirect to='/dashboard'/>
+      <Route path='/dashboard' component={DashBoard}/>
+      <Route path='/questions/view/:questionId' component={QuestionDetails}/>
+      <Route path='/questions/ask' component={AddQuestion}/>
     </div>
-  </Provider>
+  </div>
 );
 
 const styles = {
@@ -38,6 +32,9 @@ const styles = {
   contentContainer: {
     display: 'flex',
     flexDirection: 'column',
+    alignSelf: 'center',
+    minWidth: '800px',
+    maxWidth: '70%',
     marginTop: 110,
     marginLeft: 100,
     marginRight: 100

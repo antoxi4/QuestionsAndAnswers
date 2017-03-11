@@ -12,7 +12,7 @@ module.exports = {
   getQuestionById(questionId = '') {
     return Question.findOne({where: {
       id: questionId
-    }});
+    }}).populateAll();
   },
 
   getQuestions() {
