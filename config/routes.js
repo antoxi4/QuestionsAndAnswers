@@ -34,7 +34,14 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'post /user': 'UserController.create',
+  'post /question': 'QuestionController.create',
+  'post /question/answer': 'AnswerController.create',
+  'get /user/:userName': 'UserController.findOne',
+  'get /question/': 'QuestionController.find',
+  'get /question/:questionId': 'QuestionController.findOne',
 
   /***************************************************************************
   *                                                                          *
