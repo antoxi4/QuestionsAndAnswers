@@ -1,21 +1,18 @@
 'use strict';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import App from './app';
 import {
   BrowserRouter as Router,
   Route,
   Link
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 import DashBoard from './modules/dashboard';
 
-ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRedirect to="/DashBoard"/>
-      <Route path="/DashBoard" component={DashBoard}/>
-  </Router>,
-  document.getElementById('app')
-);
+render((
+  <Router component={App}>
+      <Route exact path="/" component={DashBoard}/>
+  </Router>
+), document.getElementById('app'));

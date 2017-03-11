@@ -1,3 +1,7 @@
 'use strict'
 
-export {};
+import authorization from './authorization';
+
+export {
+  authorization
+};
