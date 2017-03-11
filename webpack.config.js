@@ -7,7 +7,7 @@ const BUILD_DIR = path.resolve(__dirname, 'assets/');
 const APP_DIR = path.resolve(__dirname, 'browser');
 
 module.exports = {
-  entry: './browser/index.js',
+  entry: ['whatwg-fetch', './browser/index.js'],
   output: {
     filename: 'app.bundle.js',
     path: path.resolve(__dirname, 'assets')

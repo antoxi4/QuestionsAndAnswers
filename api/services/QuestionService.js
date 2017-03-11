@@ -9,9 +9,9 @@ module.exports = {
     });
   },
 
-  getQuestionByUser(userName = '') {
-    return User.findOne({where: {
-      name: userName
+  getQuestionById(questionId = '') {
+    return Question.findOne({where: {
+      id: questionId
     }});
   },
 

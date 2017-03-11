@@ -1,7 +1,13 @@
 'use strict';
 
-import * as AuthorizationInitialState from './authorization';
+import AuthorizationInitialState from './authorization';
+import DashBoardInitialState from './dashboard';
+import QuestionsListInitialState from './questionslist';
+import QuestionInitialState from './question';
 
 export  {
-  AuthorizationInitialState
+  AuthorizationInitialState,
+  DashBoardInitialState,
+  QuestionsListInitialState,
+  QuestionInitialState
 };
