@@ -8,5 +8,6 @@ import * as AddQuestionActions from './addQuestionActions';
 export {
   DashBoardActions,
   QuestionsListActions,
-  QuestionActions
+  QuestionActions,
+  AddQuestionActions
 };
